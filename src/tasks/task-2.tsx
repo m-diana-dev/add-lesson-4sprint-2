@@ -1,8 +1,17 @@
-type MyComponentProps = {
-  items: any
-  defaultItem: any
+type MyComponentProps<T> = {
+  items: T[]
+  defaultItem: T
 }
-function MyComponent(props: MyComponentProps) {
+
+//можно написать и стрелочныйм синтаксисом таким образом (ставим запятую <T,> чтобы ts не думал, что пишется jsx)
+
+// const MyComponent = <T,>(props: MyComponentProps<T>) =>{
+//   console.log(props)
+//   return <p>some content</p>
+// }
+
+
+function MyComponent<T>(props: MyComponentProps<T>) {
   console.log(props)
   return <p>some content</p>
 }
@@ -15,8 +24,8 @@ const App = () => {
 
   return (
     <>
-      <MyComponent items={['react', 'typescript']} defaultItem={9} />
-      <MyComponent items={users} defaultItem={'JUST STRING'} />
+      <MyComponent items={['react', 'typescript']} defaultItem={'9'} />
+      <MyComponent items={users} defaultItem={{ name: 'Bilbo', age: 111 }} />
     </>
   )
 }
