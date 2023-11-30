@@ -1,4 +1,5 @@
 import './App.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { Decks } from '../features/decks/Decks.tsx'
 import { GlobalError } from './GlobalError/GlobalError.tsx'
 import { useAppSelector } from './store.ts'
@@ -10,9 +11,10 @@ export const App = () => {
 
   return (
     <div>
-      {appStatus === 'loading' && <LinearLoader/>}
+      {appStatus === 'loading' && <LinearLoader />}
       <Decks />
       <GlobalError />
+      <footer>FOOTER</footer>
     </div>
   )
 }
